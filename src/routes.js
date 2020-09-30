@@ -1,0 +1,17 @@
+import React from "react"
+import { BrowserRouter, Switch , Route} from "react-router-dom"
+
+import Main from "./pages/main/index"
+import Profile from "./pages/profile/index"
+
+const Routes = () => (
+    <BrowserRouter>
+        <Switch>
+                <Route exact path="/" component={Main}></Route>
+                <Route exact path="/profile" component={Profile}></Route>
+        </Switch>
+    </BrowserRouter>
+    
+)
+
+export default Routes
