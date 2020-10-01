@@ -58,7 +58,8 @@ export const Menu = styled.div `
         padding: .625rem;
         vertical-align: middle;
         box-sizing: border-box;
-        box-shadow: 0px 5px 8px rgba(0,0,0,0.3);
+        border-radius: 5px;
+        box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
         transition: all .2s ease-in-out;
     }
 
