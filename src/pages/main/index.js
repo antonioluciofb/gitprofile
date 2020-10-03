@@ -1,31 +1,17 @@
 import React, { Component } from "react"
 import {AiFillGithub, BsSearch} from "react-icons/all"
 import { Container, Header, Menu, ButtonUser, ButtonRepos, ButtonSearch } from "./style"
+import { Link } from "react-router-dom"
 import "./style.js";
-import api from "../../api.js"
 
 export default class Main extends Component {
 
     state = {
-        name: "",
+        username: "",
     }
 
     handleInputChange = (event) => {
-        this.setState({ name: event.target.value })
-    }
-
-    // handleSend = () => {
-    //     alert(this.state.name)
-    // }
-
-   
-     handleSend =  async () => {
-
-        const response = await api.get(`/users/${this.state.name}`)
-
-        console.log(response.data.bio)
-
-
+        this.setState({ username: event.target.value })
     }
 
     render(){
@@ -53,7 +39,7 @@ export default class Main extends Component {
                 <div className="search"> 
                 <input onChange={this.handleInputChange} type="text" placeholder="Nome do Usuário"></input>
                 <ButtonSearch>
-                <BsSearch size={24} color="black" onClick={this.handleSend} />
+                <Link to={`/profile/${this.state.username}`}><BsSearch size={24} color="black"/></Link>
                 </ButtonSearch>
                 </div>
 

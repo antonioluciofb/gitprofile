@@ -7,8 +7,8 @@ import Profile from "./pages/profile/index"
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-                <Route exact path="/" component={Main}></Route>
-                <Route exact path="/profile" component={Profile}></Route>
+                <Route exact path="/" component={Main}/>
+                <Route exact path="/profile/:id" component={Profile}/>
         </Switch>
     </BrowserRouter>
     
