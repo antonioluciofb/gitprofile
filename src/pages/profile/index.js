@@ -39,7 +39,7 @@ export default class Profile extends Component {
 
             <Header>
 
-                <img src ={user.avatar_url}/>
+                <img alt="Foto Perfil" src ={user.avatar_url}/>
 
             </Header>
 
