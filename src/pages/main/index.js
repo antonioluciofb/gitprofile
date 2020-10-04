@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import {AiFillGithub, BsSearch} from "react-icons/all"
 import { Container, Header, Menu, ButtonUser, ButtonRepos, ButtonSearch } from "./style"
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import "./style.js";
 
 export default class Main extends Component {
@@ -18,11 +18,17 @@ export default class Main extends Component {
 
     onKeyPress = (e) => {
 
-        if(e.which === 13) {
+        if(e.which === 13 && this.state.username !== "") {
             this.setState({redirect: true})
                 }
 
         }
+
+    Redirect = () => {
+        if (this.state.username !== "") {
+            this.setState({redirect: true})
+        }
+    }
 
     render(){
         
@@ -54,9 +60,9 @@ export default class Main extends Component {
 
                     <input onKeyPress={this.onKeyPress} onChange={this.handleInputChange} type="text" placeholder="Nome do Usuário"></input>
 
-                        <ButtonSearch>
+                        <ButtonSearch onClick={() => this.Redirect()}>
 
-                            <Link to={`/profile/${this.state.username}`}><BsSearch size={24} color="black" /></Link>
+                            <BsSearch size={24} color="black" />
 
                         </ButtonSearch>
                 
