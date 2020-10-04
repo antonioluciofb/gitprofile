@@ -1,6 +1,20 @@
 import styled from "styled-components"
 
 export const Container = styled.div `
+
+    @media(max-width: 600px) {
+            
+            margin-top: 10%;
+
+        }
+
+    @media(max-width: 1500px) {
+            
+            margin-top: 3%;
+
+        }
+
+    margin-top: 6%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,6 +42,15 @@ export const Header = styled.div `
 `
 
 export const Menu = styled.div `
+
+    @media(max-width: 600px) {
+            
+            width: 90%;
+            margin-top: 4%;
+            height: 140px;
+
+        }
+
     width: 40.1%;
     height: 175px;
     background-color: #FFFFFF;
@@ -41,23 +64,31 @@ export const Menu = styled.div `
     }
 
     .search{
+
+
         display: flex;
         justify-content: center;
         align-items: center;
         width:100%;
+        transition: all .8s ease-in-out;
 
     }
 
     input {
+
+        @media(max-width: 600px) {
+            
+            width: 80%;
+
+        }
+
         align-self: center;
         margin-top: 6%;
         text-align: center;
-        width: 30%;
+        width: 45%;
         outline: none;
         border: 1px solid #d5d4d2;
-        padding: .625rem;
-        vertical-align: middle;
-        box-sizing: border-box;
+        padding: 8px;
         border-radius: 5px;
         box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
         transition: all .2s ease-in-out;
@@ -74,6 +105,7 @@ export const Menu = styled.div `
 
 `
 export const ButtonUser = styled.button`
+
     cursor: pointer;
     border:0;
     outline:0;
@@ -114,8 +146,9 @@ export const ButtonSearch = styled.button`
     border:0;
     outline:0;
     background-color: transparent;
-    cursor: cell;
+    cursor: col-resize;
     margin-top: 6%;
     margin-left: 2%;
+    
 
 `
