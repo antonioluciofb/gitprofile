@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import api from "../../api.js"
-import { Container, Header } from "./style"
+import { Container, Header, Menu } from "./style"
 import { AiOutlineTwitter, AiOutlineBook, RiGitRepositoryCommitsLine } from "react-icons/all"
 
 
@@ -10,6 +10,10 @@ export default class Profile extends Component {
 
     state = {
         user: "",
+        language: [{name,
+                    quantity: 0}],
+        repoData: [],
+        repository: 0,
     }
 
     async componentDidMount() {
@@ -24,27 +28,35 @@ export default class Profile extends Component {
             
             const loadUser = await api.get(`/users/${id}`)
 
+            const loadRepo = await api.get(`/users/${id}/repos`)
+
             const { ...infoUser } = loadUser.data
 
-            this.setState({user: infoUser})
+            this.setState({user: infoUser, repoData: loadRepo.data })
 
         }
 
     render() {
 
-        const {user} = this.state
+        const {user, repoData} = this.state
+
+        const valueL = repoData.filter(repo => repo.language == "JavaScript")
+
+        const valueA = valueL.length
+
+        console.log(valueA)
 
         return(
             
         <Container>
 
             <Header>
-                
+            
                 <div className="name">{user.name}</div>
 
                     <img alt="" src ={user.avatar_url}/>
                 
-                    <a href={user.html_url}>@ {user.login}</a>
+                    <a href={user.html_url}> {user.login}</a>
 
                 <div className="status">
 
@@ -56,12 +68,16 @@ export default class Profile extends Component {
                     <AiOutlineBook size={24}/>
                 </a>
 
-                <RiGitRepositoryCommitsLine className="iconsBar" size={24} /> {}
+                <RiGitRepositoryCommitsLine className="iconsBar" size={24}/> {repoData.length}
 
-                    
                 </div>
 
             </Header>
+
+            <Menu>
+                
+
+            </Menu>
 
         </Container>
                 

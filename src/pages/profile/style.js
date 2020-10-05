@@ -6,6 +6,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 25px;
+    color: #ffffff;
 
     img{
         width: 170px;
@@ -44,9 +45,15 @@ export const Header = styled.div`
     }
 
     .iconsBar {
+        
         margin-left: 3%;
         color: #ffffff;
     }
+
+`
+
+export const Menu = styled.div`
+
 
 `
 
