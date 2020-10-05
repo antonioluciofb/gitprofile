@@ -10,8 +10,6 @@ export default class Profile extends Component {
 
     state = {
         user: "",
-        language: [{name,
-                    quantity: 0}],
         repoData: [],
         repository: 0,
     }
@@ -40,11 +38,6 @@ export default class Profile extends Component {
 
         const {user, repoData} = this.state
 
-        const valueL = repoData.filter(repo => repo.language == "JavaScript")
-
-        const valueA = valueL.length
-
-        console.log(valueA)
 
         return(
             
