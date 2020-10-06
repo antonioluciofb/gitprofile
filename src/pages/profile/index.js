@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import api from "../../api.js"
-import { Container, Header, Menu } from "./style"
-import { AiOutlineTwitter, AiOutlineBook, RiGitRepositoryCommitsLine } from "react-icons/all"
-
+import { Container, Header, Menu, Buttom } from "./style"
 
 import "./style.js"
 
@@ -47,27 +45,29 @@ export default class Profile extends Component {
             
                 <div className="name">{user.name}</div>
 
-                    <img alt="" src ={user.avatar_url}/>
+                    <a href={`https://www.twitter.com/${user.twitter_username}`}><img alt="" src ={user.avatar_url}/></a>
                 
                     <a href={user.html_url}> {user.login}</a>
-
-                <div className="status">
-
-                <a href={"https://twitter.com/" + user.twitter_username} className="iconsBar">
-                    <AiOutlineTwitter size={24}/>
-                </a>
-
-                <a href={user.blog} className="iconsBar">
-                    <AiOutlineBook size={24}/>
-                </a>
-
-                <RiGitRepositoryCommitsLine className="iconsBar" size={24}/> {repoData.length}
-
-                </div>
 
             </Header>
 
             <Menu>
+                
+                <div className="title">Repositorys ({repoData.length})</div>
+
+                <div className="content">
+
+                        {repoData.map( repo => (
+
+                                <div className="repositorys">
+                                <div className="name">{repo.name}</div>
+                                <div className="description">{repo.description}</div>
+                                <Buttom>Mais</Buttom>
+                                </div>
+
+                        ) )}
+
+                </div>
                 
 
             </Menu>
