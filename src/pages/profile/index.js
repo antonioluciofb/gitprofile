@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import api from "../../api.js"
-import { Container, Header, Menu, Buttom } from "./style"
+import { Container, Header, Menu} from "./style"
+import { Link } from "react-router-dom"
 
 import "./style.js"
 
@@ -53,22 +54,30 @@ export default class Profile extends Component {
 
             <Menu>
                 
-                <div className="title">Repositorys ({repoData.length})</div>
+                <div className="repositorys">
 
-                <div className="content">
+                {repoData.map(repos => (
+                            
+                            <a href={repos.html_url} className="repo">
 
-                        {repoData.map( repo => (
+                            <div className="name">{(repos.name).toUpperCase()}</div>
 
-                                <div className="repositorys">
-                                <div className="name">{repo.name}</div>
-                                <div className="description">{repo.description}</div>
-                                <Buttom>Mais</Buttom>
-                                </div>
+                            <div className="description">{repos.description}</div>
 
-                        ) )}
+                            <div className="lang">{repos.language}</div>
+
+                            </a>
+
+
+)   
+
+                )
+                
+                }
 
                 </div>
-                
+
+                <div className="followers"></div>
 
             </Menu>
 
