@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import api from "../../api.js"
 import { Container, Header, Menu} from "./style"
-import { Link } from "react-router-dom"
 
 import "./style.js"
 
