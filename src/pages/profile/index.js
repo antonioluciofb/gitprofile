@@ -10,6 +10,8 @@ export default class Profile extends Component {
         user: "",
         repoData: [],
         repository: 0,
+        language: [{name:"",
+                    quantity:0}],
     }
 
     async componentDidMount() {
@@ -32,10 +34,33 @@ export default class Profile extends Component {
 
         }
 
+    language = (language) => {
+
+        var lang = this.state.language
+
+        if (lang.find(type => type === language )) {
+
+            var langIndex = lang.indexOf(type => type.name === language)
+
+            lang[langIndex].quantity += 1
+        }  
+        
+        else {
+
+            lang.push({name: language , quantity: 1})
+
+        }
+
+    }
+    
+    
     render() {
 
-        const {user, repoData} = this.state
+        const {user, repoData, language} = this.state
+        
+        repoData.map(repo => this.language(repo.language) )
 
+        console.log(language)
 
         return(
             
@@ -49,30 +74,39 @@ export default class Profile extends Component {
                 
                     <a href={user.html_url}> {user.login}</a>
 
+                    <p>{user.bio}</p>
+
             </Header>
 
             <Menu>
                 
                 <div className="repositorys">
 
+                <p>Repositorios: {repoData.length}</p>
+
                 {repoData.map(repos => (
                             
+                            repos.language !== null &&
+
                             <a href={repos.html_url} className="repo">
 
                             <div className="name">{(repos.name).toUpperCase()}</div>
 
-                            <div className="description">{repos.description}</div>
+                            {repos.description === null
+                            
+                            ? <div className="description">A little project with {repos.language}</div>
+                        
+                            : <div className="description">{repos.description}</div>
+                            
+                            }
 
                             <div className="lang">{repos.language}</div>
 
                             </a>
+                            
+                                        )   
 
-
-)   
-
-                )
-                
-                }
+                )}
 
                 </div>
 

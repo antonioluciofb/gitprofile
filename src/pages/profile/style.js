@@ -36,13 +36,19 @@ export const Header = styled.div`
         color: #ffffff;
     }
 
+    p {
+
+        margin-top: 10px;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 20px;
+    }
 `
 
 export const Menu = styled.div `
     
     width: 95%;
     height: 700px;
-    margin-top: 50px;
+    margin-top: -20px;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -61,6 +67,16 @@ export const Menu = styled.div `
         flex-direction: column;
         overflow-x: hidden;
         overflow-y: scroll;
+        p {
+
+        margin-top: 10px;
+        font-family: 'Work Sans', sans-serif;
+        font-size: 20px;
+        color: black;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        
+        }
         
 
             .repo {
@@ -111,7 +127,7 @@ export const Menu = styled.div `
 
         margin-left: 3%;
         width: 25%;
-        height: 700px;
+        height: 600px;
         background-color: #ffffff;
         border-radius: 10px;
     
