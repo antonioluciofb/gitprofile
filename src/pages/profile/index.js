@@ -38,11 +38,16 @@ export default class Profile extends Component {
 
         var lang = this.state.language
 
-        if (lang.find(type => type === language )) {
+        if (lang.find(type => type.name === language )) {
 
-            var langIndex = lang.indexOf(type => type.name === language)
+                var langIndex = lang.find(type => type.name === language)
+                
+                if(langIndex) {
 
-            lang[langIndex].quantity += 1
+                langIndex.quantity += 1 
+                
+                }
+
         }  
         
         else {
