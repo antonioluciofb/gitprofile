@@ -70,10 +70,13 @@ export default class Profile extends Component {
         const languages = this.state.language
         var numVerf = 0 
 
+        /*eslint-disable */
+        //suppress all warnings between comments
         languages.map(repo => {if (repo.quantity > numVerf) {
             numVerf = repo.quantity
             this.setState({mostUsed: repo.name})
         }})
+        /*eslint-enable */
         
     }
 
