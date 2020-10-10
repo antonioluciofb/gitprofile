@@ -130,8 +130,30 @@ export const Menu = styled.div `
         height: 600px;
         background-color: #ffffff;
         border-radius: 10px;
-    
-    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: scroll;
+        text-align: center;
+        color: black;
+        font-family: 'Work Sans', sans-serif;
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .fol{ 
+            margin-top: 20px;
+            font-size: 20px;
+            font-family: 'Work Sans', sans-serif;
+         }
+
+        img{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
     }
 
 `

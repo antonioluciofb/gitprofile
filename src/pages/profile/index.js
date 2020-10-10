@@ -9,9 +9,11 @@ export default class Profile extends Component {
     state = {
         user: "",
         repoData: [],
+        followers: [],
         repository: 0,
         language: [{name:"",
                     quantity:0}],
+        mostUsed: "",
     }
 
     async componentDidMount() {
@@ -28,10 +30,15 @@ export default class Profile extends Component {
 
             const loadRepo = await api.get(`/users/${id}/repos`)
 
+            const loadFavo = await api.get(`users/${id}/followers`)
+
             const { ...infoUser } = loadUser.data
 
-            this.setState({user: infoUser, repoData: loadRepo.data })
+            this.setState({user: infoUser, repoData: loadRepo.data, followers: loadFavo.data })
 
+            loadRepo.data.map(repo => repo.language == null ? {} :this.language(repo.language))
+
+            this.verifiedLang()
         }
 
     language = (language) => {
@@ -43,7 +50,7 @@ export default class Profile extends Component {
                 var langIndex = lang.find(type => type.name === language)
                 
                 if(langIndex) {
-
+                
                 langIndex.quantity += 1 
                 
                 }
@@ -57,15 +64,23 @@ export default class Profile extends Component {
         }
 
     }
-    
+
+    verifiedLang = () => {
+
+        const languages = this.state.language
+        var numVerf = 0 
+
+        languages.map(repo => {if (repo.quantity > numVerf) {
+            numVerf = repo.quantity
+            this.setState({mostUsed: repo.name})
+        }})
+        
+    }
+
     
     render() {
 
-        const {user, repoData, language} = this.state
-        
-        repoData.map(repo => this.language(repo.language) )
-
-        console.log(language)
+        const {user, repoData, mostUsed, followers } = this.state
 
         return(
             
@@ -87,13 +102,15 @@ export default class Profile extends Component {
                 
                 <div className="repositorys">
 
-                <p>Repositorios: {repoData.length}</p>
+                <p>Repositorys: {repoData.length}</p> 
+
+                <p>Favority Language in Git: {mostUsed}</p>
 
                 {repoData.map(repos => (
                             
                             repos.language !== null &&
 
-                            <a href={repos.html_url} className="repo">
+                            <a key={repos.id} href={repos.html_url} className="repo">
 
                             <div className="name">{(repos.name).toUpperCase()}</div>
 
@@ -115,7 +132,20 @@ export default class Profile extends Component {
 
                 </div>
 
-                <div className="followers"></div>
+                <div className="followers">
+                    
+                    <p className="fol">Followers</p>
+
+                    {followers.map(user => (
+
+                            <a href ={`/profile/${user.login}`}>
+                            <img src={user.avatar_url} alt="foto"></img>
+                            <p>{user.login}</p>
+                            </a>
+
+                    ))}
+                                       
+                </div>
 
             </Menu>
 
