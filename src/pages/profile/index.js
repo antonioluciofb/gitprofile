@@ -126,7 +126,7 @@ export default class Profile extends Component {
 
                 <div className="repositorys">
 
-                <Scrollbars>
+                <Scrollbars autoHide>
 
                 <div className="items">
 
@@ -161,8 +161,10 @@ export default class Profile extends Component {
                 </div>
                 </Scrollbars>
                 </div>
-
+                
                 <div className="followers">
+
+                <Scrollbars autoHide>
                     
                     <p className="fol">Followers</p>
 
@@ -174,12 +176,14 @@ export default class Profile extends Component {
                             </>
 
                     ))}
-                                       
+                </Scrollbars>
+              
                 </div>
 
             </Menu>
 
         </Container>
+
                 
             )
 

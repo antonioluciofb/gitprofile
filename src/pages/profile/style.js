@@ -142,7 +142,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     text-align: center;
     color: black;
     font-family: 'Work Sans', sans-serif;
