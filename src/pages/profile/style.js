@@ -2,6 +2,8 @@ import styled from "styled-components"
 
 export const Container = styled.div`
 
+
+
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -152,6 +154,7 @@ export const Menu = styled.div `
         img{
             margin-top: 10px;
             margin-bottom: 10px;
+            cursor: pointer;
         }
 
     }

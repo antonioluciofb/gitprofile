@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { useHistory } from "react-router-dom"
 import api from "../../api.js"
 import { Container, Header, Menu} from "./style"
 
@@ -80,6 +81,25 @@ export default class Profile extends Component {
         
     }
 
+    changeUser = async (login) => {
+
+        const loadUser = await api.get(`/users/${login}`)
+
+        const loadRepo = await api.get(`/users/${login}/repos`)
+
+        const loadFavo = await api.get(`users/${login}/followers`)
+
+        const { ...infoUser } = loadUser.data
+
+        this.setState({user: infoUser, repoData: loadRepo.data, followers: loadFavo.data })
+
+        loadRepo.data.map(repo => repo.language == null ? {} :this.language(repo.language))
+
+        this.verifiedLang()
+
+        
+    }
+
     
     render() {
 
@@ -141,10 +161,10 @@ export default class Profile extends Component {
 
                     {followers.map(user => (
 
-                            <a href ={`/profile/${user.login}`}>
-                            <img src={user.avatar_url} alt="foto"></img>
+                            <>
+                            <img onClick={()=>{this.changeUser(user.login)}} src={user.avatar_url} alt="foto"></img>
                             <p>{user.login}</p>
-                            </a>
+                            </>
 
                     ))}
                                        
