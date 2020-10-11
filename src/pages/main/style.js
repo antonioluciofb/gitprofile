@@ -127,6 +127,7 @@
     cursor: pointer;
     border:0;
     outline:0;
+    opacity: 50%;
     letter-spacing: 4px;
     width: 49.9%;
     height: 42px;
