@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import api from "../../api.js"
-import { Container, Header, Menu} from "./style"
+import { Container, Header, Menu,} from "./style"
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 import "./style.js"
 
@@ -121,13 +123,18 @@ export default class Profile extends Component {
             </Header>
 
             <Menu>
-                
+
                 <div className="repositorys">
+
+                <Scrollbars>
+
+                <div className="items">
 
                 <p>Repositorys: {repoData.length}</p> 
 
                 <p>Favority Language in Git: {mostUsed}</p>
 
+        
                 {repoData.map(repos => (
                             
                             repos.language !== null &&
@@ -151,7 +158,8 @@ export default class Profile extends Component {
                                         )   
 
                 )}
-
+                </div>
+                </Scrollbars>
                 </div>
 
                 <div className="followers">
