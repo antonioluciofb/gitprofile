@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { useHistory } from "react-router-dom"
 import api from "../../api.js"
 import { Container, Header, Menu} from "./style"
 
