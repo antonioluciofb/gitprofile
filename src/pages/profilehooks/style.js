@@ -2,17 +2,17 @@
 
     export const Container = styled.div `
 
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 25px;
-    color: #ffffff;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 25px;
+        color: #ffffff;
 
-    img{
-    width: 170px;
-    border-radius: 50%;
-    }
+        img{
+        width: 170px;
+        border-radius: 50%;
+        }
 
     `
 

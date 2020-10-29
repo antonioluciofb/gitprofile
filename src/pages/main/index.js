@@ -33,7 +33,7 @@ export default class Main extends Component {
     render(){
         
         if(this.state.redirect) {
-            return <Redirect to={`/profile/${this.state.username}`} />
+            return <Redirect to={`/profilehooks/${this.state.username}`} />
           }
 
         return(
